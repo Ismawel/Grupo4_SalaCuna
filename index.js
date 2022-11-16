@@ -2,9 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-
 const app = express();
-const parvuloRoutes = require('./routes/parvuloRoutes');
+
+const EducadoraParvuloRoutes = require('./routes/EducadoraParvuloRoutes');
+
+app.use(cors())
+app.use(express.json());
+app.options('*', cors());
+app.use('/api', EducadoraParvuloRoutes);
+
+const parvuloRoutes = require('./routes/ParvuloRoutes');
 
 app.use(cors())
 app.use(express.json());

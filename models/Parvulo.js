@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const AsistenteParvulo = require('./AsistenteParvulo')
-const Apoderado = require('./apoderado')
+const Apoderado = require('./Apoderado')
 const Schema = mongoose.Schema;
 const ParvuloSchema = new Schema({
     NombreCompleto: {
@@ -12,12 +12,13 @@ const ParvuloSchema = new Schema({
         required: true
     },
     FechaDeNacimiento: {
-        type: String,
-        required: true
+        type: Date,
+        required: false,
+        default: Date.now()
     },
     Domicilio: {
         type: String,
-        require: true
+        required: true
     },
     InformacionRelevante: {
         type: String,
@@ -26,15 +27,7 @@ const ParvuloSchema = new Schema({
     Foto: {
         type: String,
         required: true
-    },
-    AsistentesParvulos: {
-        type: Schema.ObjectId,
-        ref: AsistenteParvulo
-    },
-    Apoderados: {
-        type: Schema.ObjectId,
-        ref: Apoderado
     }
 });
 
-module.exports = mongoose.model('parvulo', ParvuloSchema);
+module.exports = mongoose.model('Parvulo', ParvuloSchema);
